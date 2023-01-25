@@ -229,6 +229,7 @@
       >
     </p>
     <p>v0.0.7</p>
+    <p id="debug"></p>
 
     <script>
       window.addEventListener('load', () => {
@@ -240,6 +241,8 @@
         const isInstalled = window.matchMedia(
           '(display-mode: standalone)'
         ).matches;
+
+        document.getElementById('debug').innerText = window.location
 
         if (isInstalled) {
           pwaUrl.search.includes('url')

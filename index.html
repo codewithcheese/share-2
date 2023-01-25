@@ -88,7 +88,7 @@
 
     <style>
       .grid {
-        display: grid;
+        display: none;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
         grid-gap: 20px;
@@ -134,23 +134,13 @@
   </head>
 
   <body>
-    <h1
-      style="
-        color: #de5641;
-        font-size: clamp(2rem, 5vw, 4rem);
-        margin-bottom: 0.5em;
-        margin-top: 0.5em;
-      "
-    >
-      Share 2
-    </h1>
 
     <div id="ready" class="message">
       <span
         style="height: 1em; line-height: 1; font-size: 1.5em; color: #60c35f"
         >✓</span
       >
-      <span style="color: #3a3b40; line-height: 1">Ready to share!</span>
+      <span style="color: #3a3b40; line-height: 1">Ready to receive shares!</span>
     </div>
 
     <div id="install" class="message">
@@ -158,7 +148,7 @@
         style="height: 1em; line-height: 1; font-size: 1.5em; color: #60c35f"
         >📱</span
       >
-      <span style="color: #3a3b40; line-height: 1">Install PWA to share!</span>
+      <span style="color: #3a3b40; line-height: 1">Install to start sharing</span>
     </div>
 
     <div id="select" class="message">
@@ -169,7 +159,7 @@
       <span style="color: #3a3b40; line-height: 1">Select a service</span>
     </div>
 
-    <div class="grid">
+    <div id="grid" class="grid">
       <a id="archive-today" class="grey">
         <img src="img/archive-today.avif" alt="archive.today" />
       </a>
@@ -181,28 +171,16 @@
       </a>
     </div>
 
-    <details style="text-align: left; width: 100%"
-      ><summary style="cursor: pointer; font-weight: bold"
-        >Installation</summary
-      >
-      <p
-        >If you are on a browser that supports PWA, you have probably already
-        seen the popup for installation:</p
-      >
-      <img
-        src="img/instructions1.png"
-        alt="Demonstration of the installation popup on Chrome for Android"
-        style="width: 100%"
-      /><p
-        >If you dismissed the popup, you can look for the address bar or other
-        browser menus for the installation button:</p
-      >
+    <details id="instructions" style="text-align: left; width: 100%" open="open">
+      <summary style="cursor: pointer; font-weight: bold">Installation</summary>
+      <p>This is a progressive web app, that allows you to share from any app on your phone to websites that do not have apps.</p>
+      <p>Sharing to progressing web app is currently only supported in Chrome or Edge. Use Chrome or Edge to install this app, once installed the app will appear as a share option in any app.</p>
       <img
         src="img/instructions2.png"
         alt="Demonstration of the installation menu option on Chrome for Android"
         style="width: 100%"
       />
-      <p>More information:</p>
+      <p>For more install instructions:</p>
       <ul>
         <li>
           <a href="https://support.google.com/chrome/answer/9658361?hl=en"
@@ -216,20 +194,31 @@
           >
         </li>
       </ul>
+      <p>Supported share targets</p>
+      <ul>
+        <li>
+          <a href="https://archive.is">archive.is</a> - Useful to remove paywalls
+        </li>
+        <li>
+          <a href="https://similarrepos.com">similarrepos.com</a> - Find similar GitHub repos
+        </li>
+        <li>
+          <a href="https://discu.eu">discu.eu</a> - Discussions around the web
+        </li>
+      </ul>
     </details>
 
     <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem" />
 
     <p>
       <a
-        href="https://github.com/codewithcheese/share2"
+        href="https://github.com/codewithcheese/share-2"
         target="_blank"
-        rel="noopener noreferrer nofollow"
         >GitHub</a
       >
     </p>
-    <p>v0.0.7</p>
-    <p id="debug"></p>
+    <p>v0.1.0</p>
+    <p style='display: none' id="debug"></p>
 
     <script>
       window.addEventListener('load', () => {
@@ -254,6 +243,9 @@
             : document
               .getElementById('ready')
                 .style.setProperty('display', 'flex');
+
+          document.getElementById('grid').style.display = 'grid'
+          document.getElementById('instructions').style.display = 'none'
         } else {
           document
             .getElementById('install')

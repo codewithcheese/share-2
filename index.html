@@ -244,8 +244,10 @@
 
         document.getElementById('debug').innerText = window.location
 
+        const args = parseArgs(pwaUrl);
+
         if (isInstalled) {
-          pwaUrl.search.includes('url')
+          args.url
             ? document
                 .getElementById('select')
                 .style.setProperty('display', 'flex')
@@ -258,9 +260,7 @@
             .style.setProperty('display', 'flex');
         }
 
-        if (!pwaUrl.search.includes('url')) return;
-
-        const args = parseArgs(pwaUrl);
+        if (!args.url) return;
 
         // share2 archive.today
         const archiveLink = document.getElementById('archive-today');

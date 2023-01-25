@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      property="og:description"
+      content="A simple PWA app, that can be installed in Android, to enable sharing to common services."
+    />
+    <meta property="og:image" content="img/intro.png" />
+
+    <title> Share 2 </title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="icon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="icon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="icon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="icon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="icon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="icon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="icon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="icon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="icon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="icon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="share-2/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 20px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .grid img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 80%;
+        object-fit: contain;
+      }
+
+      .grey {
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -o-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        filter: grayscale(100%);
+      }
+
+      .grid h3 {
+        text-align: center;
+      }
+
+      .grid a:active {
+        color: black;
+      }
+
+      .message {
+        align-items: center;
+        display: none;
+        flex-wrap: wrap;
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: bold;
+        gap: 0.25em;
+        justify-content: center;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1
+      style="
+        color: #de5641;
+        font-size: clamp(2rem, 5vw, 4rem);
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
+      "
+    >
+      Share 2
+    </h1>
+
+    <div id="ready" class="message">
+      <span
+        style="height: 1em; line-height: 1; font-size: 1.5em; color: #60c35f"
+        >✓</span
+      >
+      <span style="color: #3a3b40; line-height: 1">Ready to share!</span>
+    </div>
+
+    <div id="install" class="message">
+      <span
+        style="height: 1em; line-height: 1; font-size: 1.5em; color: #60c35f"
+        >📱</span
+      >
+      <span style="color: #3a3b40; line-height: 1">Install PWA to share!</span>
+    </div>
+
+    <div id="select" class="message">
+      <span
+        style="height: 1em; line-height: 1; font-size: 1.5em; color: #60c35f"
+        >👉</span
+      >
+      <span style="color: #3a3b40; line-height: 1">Select a service</span>
+    </div>
+
+    <div class="grid">
+      <a id="archive-today" class="grey">
+        <img src="img/archive-today.avif" alt="archive.today" />
+      </a>
+      <a id="similar-repos" class="grey">
+        <img src="img/similar-repos-border.jpeg" alt="similarrepos.com" />
+      </a>
+      <a id="discu" class="grey">
+        <img src="img/discu-border.png" alt="discu.eu" />
+      </a>
+    </div>
+
+    <details style="text-align: left; width: 100%"
+      ><summary style="cursor: pointer; font-weight: bold"
+        >Installation</summary
+      >
+      <p
+        >If you are on a browser that supports PWA, you have probably already
+        seen the popup for installation:</p
+      >
+      <img
+        src="img/instructions1.png"
+        alt="Demonstration of the installation popup on Chrome for Android"
+        style="width: 100%"
+      /><p
+        >If you dismissed the popup, you can look for the address bar or other
+        browser menus for the installation button:</p
+      >
+      <img
+        src="img/instructions2.png"
+        alt="Demonstration of the installation menu option on Chrome for Android"
+        style="width: 100%"
+      />
+      <p>More information:</p>
+      <ul>
+        <li>
+          <a href="https://support.google.com/chrome/answer/9658361?hl=en"
+            >Google Chrome Help</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://support.microsoft.com/en-us/topic/install-manage-or-uninstall-apps-in-microsoft-edge-0c156575-a94a-45e4-a54f-3a84846f6113"
+            >Microsoft Edge Support</a
+          >
+        </li>
+      </ul>
+    </details>
+
+    <hr style="margin-top: 1.5rem; margin-bottom: 1.5rem" />
+
+    <p>
+      <a
+        href="https://github.com/codewithcheese/share2"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        >GitHub</a
+      >
+    </p>
+    <p>v0.0.7</p>
+
+    <script>
+      window.addEventListener('load', () => {
+        registerServiceWorker();
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const pwaUrl = window.location;
+        const isInstalled = window.matchMedia(
+          '(display-mode: standalone)'
+        ).matches;
+
+        if (isInstalled) {
+          pwaUrl.search.includes('url')
+            ? document
+                .getElementById('select')
+                .style.setProperty('display', 'flex')
+            : document
+              .getElementById('ready')
+                .style.setProperty('display', 'flex');
+        } else {
+          document
+            .getElementById('install')
+            .style.setProperty('display', 'flex');
+        }
+
+        if (!pwaUrl.search.includes('url')) return;
+
+        const args = parseArgs(pwaUrl);
+
+        // share2 archive.today
+        const archiveLink = document.getElementById('archive-today');
+        archiveLink.href =
+          'https://archive.today/?run=1&url=' + encodeURIComponent(args.url);
+        archiveLink.className = '';
+
+        // share2 similarrepos.com
+        const matchGh = /https?:\/\/(www\.)?github\.com\/([^\/]+)\/([^\/#?]+)/;
+        const matchGhUrl = args.url.match(matchGh);
+        if (matchGhUrl) {
+          const similarReposLink = document.getElementById('similar-repos');
+          similarReposLink.href = `https://similarrepos.com/${matchGhUrl[2]}/${matchGhUrl[3]}/`;
+          similarReposLink.className = '';
+        }
+
+        // share2 discu.eu
+        const discuLink = document.getElementById('discu');
+        discuLink.href = 'https://discu.eu/?q=' + encodeURIComponent(args.url);
+        discuLink.className = '';
+      });
+
+      async function registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+          try {
+            await navigator.serviceWorker.register('serviceworker.js');
+          } catch (e) {
+            console.error('Could not register the service worker', e);
+          }
+        }
+      }
+
+      function parseArgs(pwaUrlString) {
+        const parsedUrl = new URL(pwaUrlString);
+
+        const titleParam = parsedUrl.searchParams.get('title')?.trim() || '';
+        const textParam = parsedUrl.searchParams.get('text')?.trim() || '';
+        const urlParam = parsedUrl.searchParams.get('url')?.trim() || '';
+
+        const possibleUrlInTitleParam =
+          parseUrlLikeStringIfPossible(titleParam);
+        const possibleUrlInTextParam = parseUrlLikeStringIfPossible(textParam);
+
+        const url = [
+          possibleUrlInTitleParam,
+          possibleUrlInTextParam,
+          urlParam,
+        ].find(isValidUrl);
+
+        return { title: titleParam || '', url: url || '' };
+      }
+
+      function parseUrlLikeStringIfPossible(string) {
+        let parts = string.split('http');
+        if (!parts[1]) return null;
+
+        parts = parts[1].split(' ');
+        return `http${parts[0]}`;
+      }
+
+      function isValidUrl(urlString) {
+        try {
+          return Boolean(new URL(urlString));
+        } catch (e) {
+          return false;
+        }
+      }
+    </script>
+  </body>
+
+  <style>
+    body {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-family: Verdana, Geneva, sans-serif;
+      line-height: 1.33334;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1,
+    hr,
+    p,
+    details {
+      max-width: 512px;
+    }
+
+    p,
+    details {
+      margin: 1rem 0;
+    }
+
+    hr {
+      width: 100%;
+    }
+  </style>
+</html>
